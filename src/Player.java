@@ -1,5 +1,5 @@
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Player {
@@ -9,51 +9,36 @@ public class Player {
 
     public String name;
     public int dorsal;
-    public String team;
     public String position;
+    public String team;
     public double weight;
     public double height;
     public LocalDate birthday;
     public String nationality;
     public boolean isActive;
 
-    public Player()
-    {
-        System.out.println("Player por Constructor");
-        name = leer.nextLine();
-        dorsal = leer.nextInt();
-        team = leer.next();
-    }
+    public Player() {
+        Scanner leer = new Scanner(System.in);
+        Random rand = new Random();
 
-    public Player(String name, int dorsal)
-    {
-        this.name = name;
-        this.dorsal = dorsal;
-    }
-
-    public Player crearPlayer()
-    {
-        System.out.println("Creando el player");
-        System.out.println("Ingresar Nombre");
+        System.out.print("Nombre: ");
         name = leer.nextLine();
-        System.out.println("Ingresar Dorsal");
-        dorsal = leer.nextInt();
-        System.out.println("Ingresar Team");
-        team = leer.nextLine();
-        System.out.println("Ingresar Position");
+
+        System.out.print("Position: ");
         position = leer.nextLine();
-        System.out.println("Ingresar Weight");
-        weight = leer.nextDouble();
-        System.out.println("Ingresar Height");
-        height = leer.nextDouble();
-        //System.out.println("Ingresar birthday");
-        //birthday = LocalDate.parse(leer.nextLine());
-        System.out.println("Ingresar nationality");
+
+        System.out.print("Nationality: ");
         nationality = leer.nextLine();
+
+        // Valores generados automáticamente
+        dorsal = rand.nextInt(99) + 1; // dorsal entre 1 y 99
+        weight = 60 + rand.nextDouble() * 30; // entre 60 y 90 kg
+        height = 1.60 + rand.nextDouble() * 0.40; // entre 1.60 y 2.00 m
+        int year = 1985 + rand.nextInt(15); // entre 1985 y 2000
+        int month = rand.nextInt(12) + 1;
+        int day = rand.nextInt(28) + 1;
+        birthday = LocalDate.of(year, month, day);
+
         isActive = true;
-
-        return this;
-
     }
-
 }
