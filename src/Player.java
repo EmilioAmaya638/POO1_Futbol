@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Player {
 
+
+
     Scanner leer = new Scanner(System.in);
     //Atributos de la clase
 
